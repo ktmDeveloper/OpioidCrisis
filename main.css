@@ -56,11 +56,10 @@ table {
 /* End CSS Reset */
 
 #opiodDeathVisual {
-  margin: 50px auto auto auto;
+  margin: 25px auto;
   max-width: 1200px;
   width: 90%;
   background: #48466d;
-  padding: 15px;
   min-width: 400px;
 }
 
@@ -143,6 +142,10 @@ table {
 
 @media only screen and (min-width: 600px) {
  
+  #opiodDeathVisual {
+    padding:15px;  
+  }
+  
   #opiodDeathVisual .content {
     display: grid;
     grid-template-columns: 1fr 5fr;
