@@ -57,8 +57,8 @@ table {
 
 #opiodDeathVisual {
   margin: 50px auto auto auto;
-  max-width: 1024px;
-  width: 80%;
+  max-width: 1200px;
+  width: 90%;
   background: #48466d;
   padding: 15px;
   min-width: 400px;
@@ -74,7 +74,7 @@ table {
 #opiodDeathVisual .content{
   position:relative;
   overflow-y:scroll;
-  max-height:500px
+  max-height:600px;
 }
 
 #opiodDeathVisual .content .controls {
@@ -151,9 +151,14 @@ table {
   #opiodDeathVisual .content .controls h4 {
     display: block;
     margin-bottom: 15px;
+    text-align:center;
+    font-weight:bold;
   }
 
   #opiodDeathVisual .content .controls ul {
     flex-direction: column;
+  }
+  #opiodDeathVisual .content .controls ul li {
+    max-width:100%;
   }
 }
