@@ -73,6 +73,8 @@ table {
 }
 #opiodDeathVisual .content{
   position:relative;
+  overflow-y:scroll;
+  max-height:600px
 }
 
 #opiodDeathVisual .content .controls {
