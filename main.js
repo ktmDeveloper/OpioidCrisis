@@ -26,7 +26,7 @@ class opioidDeathVisual {
             labels: [],
             datasets: [{
                 data: [], //this data has to be respective to the labels above
-                backgroundColor: 'rgb(70,205,207)',
+                backgroundColor: '#e27d60',
                 label: 'Death By Year',
                 fill: false,
                 pointRadius: 10,
@@ -38,7 +38,7 @@ class opioidDeathVisual {
             labels: [],
             datasets: [{
                 data: [], //this data has to be respective to the labels above
-                backgroundColor: 'rgb(70,205,207)',
+                backgroundColor: '#e27d60',
                 label: 'Death By Country',
                 fill: false
             }]
@@ -147,8 +147,9 @@ class opioidDeathVisual {
             .then(res => res.json())
             .then(data => {
                 this.unfilteredData = data
+                this.filterData(this.unfilteredData)
 
-                this.filterData()
+                //update UI. Remove 'loading'.
                 this.loaded = true
                 this.updateUI()
 
@@ -162,7 +163,7 @@ class opioidDeathVisual {
     }
 
     //loop over rawData and and pass into filterBySexData, filterByYearData and filterByCountryData obeying the chartJS requirements
-    filterData() {
+    filterData(unfilteredData) {
         //There are a lot of loops inside this function, but no loop is inside another loop, so the run time should still be in the order of O(n)
 
         //I use map instead of object because Map is easier to manipulate
@@ -170,7 +171,7 @@ class opioidDeathVisual {
         let unfilteredYearData = new Map()
         let unfilteredCountryData = new Map()
 
-        this.unfilteredData.forEach((record) => {
+        unfilteredData.forEach((record) => {
             unfilteredSexData.set(record['sex_name'], unfilteredSexData.get(record['sex_name']) + 1 || 1)
             unfilteredYearData.set(record['year'], unfilteredYearData.get(record['year']) + 1 || 1)
             unfilteredCountryData.set(record['location_name'], unfilteredCountryData.get(record['location_name']) + 1 || 1)
@@ -240,6 +241,6 @@ class opioidDeathVisual {
 
 (function() { //iife to avoid globals
     let root = document.getElementById('opioidDeathVisual')
-    let url = 'https://raw.githubusercontent.com/ktmDeveloper/OpioidCrisis/master/data.json'
-    new opioidDeathVisual(root, url)
+    let dataURL = 'https://raw.githubusercontent.com/ktmDeveloper/OpioidCrisis/master/data.json'
+    new opioidDeathVisual(root, dataURL)
 })();
