@@ -240,6 +240,5 @@ class opiodDeathVisual {
 (function() { //iife to avoid globals
     let root = document.getElementById('opiodDeathVisual')
     let url = 'https://raw.githubusercontent.com/ktmDeveloper/OpioidCrisis/master/data.json'
-    //let url = 'https://api.myjson.com/bins/10r9rs'
     new opiodDeathVisual(root, url)
 })();
