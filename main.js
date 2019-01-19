@@ -101,6 +101,7 @@ class opiodDeathVisual {
                 options: {
                     scales: {
                         xAxes: [{
+                            position:'top',
                             ticks: {
                                 beginAtZero: true,
                                 stepSize: 10,
