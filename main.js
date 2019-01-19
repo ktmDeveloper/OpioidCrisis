@@ -1,4 +1,3 @@
-
 class opiodDeathVisual {
     constructor(root, url) {
         this.root = root
@@ -30,8 +29,8 @@ class opiodDeathVisual {
                 backgroundColor: 'rgb(70,205,207)',
                 label: 'Death By Year',
                 fill: false,
-                pointRadius:10,
-                pointHoverRadius:15
+                pointRadius: 10,
+                pointHoverRadius: 15
             }]
         }
 
@@ -57,11 +56,14 @@ class opiodDeathVisual {
                         fontSize: 18
                     },
                     legend: {
-                      labels:{
-                        fontSize: 16
-                      }
+                        labels: {
+                            fontSize: 16
+                        }
                     },
                     maintainAspectRatio: false,
+                    animation: {
+                        duration: 0
+                    }
                 }
 
             },
@@ -88,6 +90,9 @@ class opiodDeathVisual {
                         }]
                     },
                     maintainAspectRatio: false,
+                    animation: {
+                        duration: 0
+                    }
                 }
             },
             'country': {
@@ -116,6 +121,9 @@ class opiodDeathVisual {
                     },
                     responsive: true,
                     maintainAspectRatio: false,
+                    animation: {
+                        duration: 0
+                    }
                 }
 
             }
@@ -127,34 +135,34 @@ class opiodDeathVisual {
                 this.changeGraph(e.target)
             }
         })
-        
+
         //initial call to load data. After the async call, filter the data and initialize the chart view 
         this.loadData(this.url)
     }
-  
+
     //fetch the json data
-    loadData(url){
-      fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        this.unfilteredData = data
-        
-        this.filterData()
-        this.loaded = true
-        this.updateUI()
-        
-        //get the node with '.active' class and pass in for initial view
-        this.changeGraph(this.root.querySelector('.controls .active'))
-      })
-      .catch(err => { //simple error handling
-        alert('Error occured. Check console for details')
-        console.log(err)
-      })
+    loadData(url) {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                this.unfilteredData = data
+
+                this.filterData()
+                this.loaded = true
+                this.updateUI()
+
+                //get the node with '.active' class and pass in for initial view
+                this.changeGraph(this.root.querySelector('.controls .active'))
+            })
+            .catch(err => { //simple error handling
+                alert('Error occured. Check console for details')
+                console.log(err)
+            })
     }
 
     //loop over rawData and and pass into filterBySexData, filterByYearData and filterByCountryData obeying the chartJS requirements
     filterData() {
-       //There are a lot of loops inside this function, but no loop is inside another loop, so the run time should still be in the order of O(n)
+        //There are a lot of loops inside this function, but no loop is inside another loop, so the run time should still be in the order of O(n)
 
         //I use map instead of object because Map is easier to manipulate
         let unfilteredSexData = new Map()
@@ -167,7 +175,7 @@ class opiodDeathVisual {
             unfilteredCountryData.set(record['location_name'], unfilteredCountryData.get(record['location_name']) + 1 || 1)
 
         })
-        
+
         //sort the entries by year and alphabetically, and then only pass it to chartJS datasets
         let sortedYearData = new Map([...unfilteredYearData.entries()].sort((a, b) => a[0] - b[0]))
         let sortedCountryData = new Map([...unfilteredCountryData.entries()].sort())
@@ -218,14 +226,14 @@ class opiodDeathVisual {
     }
 
     updateUI() {
-        if(this.loaded){
-          this.root.querySelector('.loading').style.display = 'none'
+        if (this.loaded) {
+            this.root.querySelector('.loading').style.display = 'none'
         }
-        if(this.currActive){
-          this.root.querySelector('.active').classList.remove('active')
-          this.currActive.classList.add('active')
+        if (this.currActive) {
+            this.root.querySelector('.active').classList.remove('active')
+            this.currActive.classList.add('active')
         }
-        
+
     }
 }
 
