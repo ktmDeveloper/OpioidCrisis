@@ -1,4 +1,4 @@
-class opiodDeathVisual {
+class opioidDeathVisual {
     constructor(root, url) {
         this.root = root
         this.url = url
@@ -239,7 +239,7 @@ class opiodDeathVisual {
 }
 
 (function() { //iife to avoid globals
-    let root = document.getElementById('opiodDeathVisual')
+    let root = document.getElementById('opioidDeathVisual')
     let url = 'https://raw.githubusercontent.com/ktmDeveloper/OpioidCrisis/master/data.json'
-    new opiodDeathVisual(root, url)
+    new opioidDeathVisual(root, url)
 })();
