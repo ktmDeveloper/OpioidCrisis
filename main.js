@@ -103,7 +103,7 @@ class opiodDeathVisual {
                         xAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                stepSize: 5,
+                                stepSize: 10,
                                 fontSize: 16
                             }
                         }],
