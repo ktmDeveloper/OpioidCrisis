@@ -239,7 +239,7 @@ class opiodDeathVisual {
 
 (function() { //iife to avoid globals
     let root = document.getElementById('opiodDeathVisual')
-    let url = 'http://ghdx.healthdata.org/gbd-results-tool?params=gbd-api-2017-permalink/7552e97b581d17efa4ee1aaa568c193b'
+    let url = 'https://raw.githubusercontent.com/ktmDeveloper/OpioidCrisis/master/data.json'
     //let url = 'https://api.myjson.com/bins/10r9rs'
     new opiodDeathVisual(root, url)
 })();
